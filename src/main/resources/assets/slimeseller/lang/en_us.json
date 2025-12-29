@@ -1,5 +1,6 @@
 {
-  "key.slimeseller.sell": "Sell Slime Balls",
-  "key.slimeseller.autosell": "Sell Slime Balls Loop",
-  "key.category.slimeseller.main": "Slime Seller by Puukly"
+  "key.slimeseller.sell": "Sell Selected Item",
+  "key.slimeseller.autosell": "Toggle Auto-Sell",
+  "key.slimeseller.selectitem": "Select Item to Sell",
+  "key.category.slimeseller.main": "Puukly's Item Seller"
 }

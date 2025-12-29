@@ -8,6 +8,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.screen.slot.SlotActionType;
@@ -15,11 +16,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class SlimeSellerMod implements ClientModInitializer {
-    private static KeyBinding sellSlimeKey;
+    private static KeyBinding sellItemKey;
     private static KeyBinding autoSellToggleKey;
+    private static KeyBinding openItemSelectorKey;
     private static boolean waitingForContainer = false;
     private static boolean shouldCloseScreen = false;
     private static int ticksWaited = 0;
@@ -34,6 +38,10 @@ public class SlimeSellerMod implements ClientModInitializer {
     private static final Random random = new Random();
     private static boolean autoSellInProgress = false;
 
+    // Item selection
+    private static Item selectedItem = Items.SLIME_BALL; // Default to slime ball
+    private static ItemSelectorScreen itemSelectorScreen = null;
+
     @Override
     public void onInitializeClient() {
         // Create a custom category for our keybinding
@@ -42,7 +50,7 @@ public class SlimeSellerMod implements ClientModInitializer {
         );
 
         // Register the manual sell keybinding (F6 by default)
-        sellSlimeKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+        sellItemKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.slimeseller.sell",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_F6,
@@ -54,6 +62,14 @@ public class SlimeSellerMod implements ClientModInitializer {
                 "key.slimeseller.autosell",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_F7,
+                slimeSellerCategory
+        ));
+
+        // Register the item selector keybinding (F8 by default)
+        openItemSelectorKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.slimeseller.selectitem",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_F8,
                 slimeSellerCategory
         ));
 
@@ -71,11 +87,16 @@ public class SlimeSellerMod implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
 
+            // Handle item selector key press
+            if (openItemSelectorKey.wasPressed() && client.currentScreen == null) {
+                openItemSelector(client);
+            }
+
             // Handle auto-sell toggle key press
             if (autoSellToggleKey.wasPressed()) {
                 autoSellEnabled = !autoSellEnabled;
                 if (autoSellEnabled) {
-                    System.out.println("[SlimeSeller] Auto-sell ENABLED");
+                    System.out.println("[SlimeSeller] Auto-sell ENABLED for " + selectedItem.getName().getString());
                     autoSellDelayTicks = 0;
                     autoSellTargetDelay = getRandomDelay();
                     autoSellInProgress = false;
@@ -88,7 +109,7 @@ public class SlimeSellerMod implements ClientModInitializer {
             }
 
             // Handle manual sell key press (only if auto-sell is not running)
-            if (sellSlimeKey.wasPressed() && !waitingForContainer && !autoSellEnabled) {
+            if (sellItemKey.wasPressed() && !waitingForContainer && !autoSellEnabled) {
                 System.out.println("[SlimeSeller] Manual hotkey pressed");
                 executeSellCommand(client);
                 waitingForContainer = true;
@@ -115,8 +136,8 @@ public class SlimeSellerMod implements ClientModInitializer {
                 // Check if a GUI screen is now open
                 if (client.currentScreen != null) {
                     System.out.println("[SlimeSeller] Screen detected: " + client.currentScreen.getClass().getSimpleName());
-                    // Container is open, now move slime items
-                    moveSlimeItems(client);
+                    // Container is open, now move items
+                    moveSelectedItems(client);
                     waitingForContainer = false;
                     ticksWaited = 0;
                     // Schedule screen close after a small delay
@@ -148,6 +169,17 @@ public class SlimeSellerMod implements ClientModInitializer {
                 }
             }
         });
+    }
+
+    private void openItemSelector(MinecraftClient client) {
+        System.out.println("[SlimeSeller] Opening item selector");
+        itemSelectorScreen = new ItemSelectorScreen(Text.literal("Select Item to Sell"), this::onItemSelected);
+        client.setScreen(itemSelectorScreen);
+    }
+
+    private void onItemSelected(Item item) {
+        selectedItem = item;
+        System.out.println("[SlimeSeller] Selected item: " + item.getName().getString());
     }
 
     private int getRandomDelay() {
@@ -188,7 +220,7 @@ public class SlimeSellerMod implements ClientModInitializer {
         }
     }
 
-    private void moveSlimeItems(MinecraftClient client) {
+    private void moveSelectedItems(MinecraftClient client) {
         if (client.player == null || client.player.currentScreenHandler == null) {
             System.out.println("[SlimeSeller] Cannot move items - player or handler is null");
             return;
@@ -205,8 +237,9 @@ public class SlimeSellerMod implements ClientModInitializer {
             for (int i = playerInventoryStart; i < handler.slots.size(); i++) {
                 ItemStack stack = handler.slots.get(i).getStack();
 
-                if (!stack.isEmpty() && stack.getItem() == Items.SLIME_BALL) {
-                    System.out.println("[SlimeSeller] Moving slime ball from slot " + i);
+                // Check if the item matches the selected item
+                if (!stack.isEmpty() && stack.getItem() == selectedItem) {
+                    System.out.println("[SlimeSeller] Moving " + selectedItem.getName().getString() + " from slot " + i);
                     client.interactionManager.clickSlot(
                             handler.syncId,
                             i,
@@ -217,9 +250,9 @@ public class SlimeSellerMod implements ClientModInitializer {
                     movedCount++;
                 }
             }
-            System.out.println("[SlimeSeller] Moved " + movedCount + " slime ball stacks");
+            System.out.println("[SlimeSeller] Moved " + movedCount + " " + selectedItem.getName().getString() + " stacks");
         } catch (Exception e) {
-            System.err.println("[SlimeSeller] Error moving slime items: " + e.getMessage());
+            System.err.println("[SlimeSeller] Error moving items: " + e.getMessage());
             e.printStackTrace();
         }
     }
