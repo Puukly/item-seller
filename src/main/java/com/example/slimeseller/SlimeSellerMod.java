@@ -16,8 +16,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class SlimeSellerMod implements ClientModInitializer {
@@ -38,12 +36,17 @@ public class SlimeSellerMod implements ClientModInitializer {
     private static final Random random = new Random();
     private static boolean autoSellInProgress = false;
 
-    // Item selection
-    private static Item selectedItem = Items.SLIME_BALL; // Default to slime ball
-    private static ItemSelectorScreen itemSelectorScreen = null;
+    // Minecart auto-drop
+    private static int minecartCheckTicks = 0;
+    private static final int MINECART_CHECK_INTERVAL = 20; // Check every second
 
     @Override
     public void onInitializeClient() {
+        // Load configuration first
+        ModConfig.load();
+        System.out.println("[SlimeSeller] Loaded selected item: " + ModConfig.getSelectedItem().getName().getString());
+        System.out.println("[SlimeSeller] Auto-drop minecarts: " + ModConfig.isAutoDropMinecarts());
+
         // Create a custom category for our keybinding
         KeyBinding.Category slimeSellerCategory = KeyBinding.Category.create(
                 Identifier.of("slimeseller", "main")
@@ -87,6 +90,15 @@ public class SlimeSellerMod implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
 
+            // Handle minecart auto-drop
+            if (ModConfig.isAutoDropMinecarts()) {
+                minecartCheckTicks++;
+                if (minecartCheckTicks >= MINECART_CHECK_INTERVAL) {
+                    checkAndDropMinecarts(client);
+                    minecartCheckTicks = 0;
+                }
+            }
+
             // Handle item selector key press
             if (openItemSelectorKey.wasPressed() && client.currentScreen == null) {
                 openItemSelector(client);
@@ -96,12 +108,15 @@ public class SlimeSellerMod implements ClientModInitializer {
             if (autoSellToggleKey.wasPressed()) {
                 autoSellEnabled = !autoSellEnabled;
                 if (autoSellEnabled) {
+                    Item selectedItem = ModConfig.getSelectedItem();
                     System.out.println("[SlimeSeller] Auto-sell ENABLED for " + selectedItem.getName().getString());
+                    client.player.sendMessage(Text.literal("§aAuto-sell enabled for " + selectedItem.getName().getString()), false);
                     autoSellDelayTicks = 0;
                     autoSellTargetDelay = getRandomDelay();
                     autoSellInProgress = false;
                 } else {
                     System.out.println("[SlimeSeller] Auto-sell DISABLED");
+                    client.player.sendMessage(Text.literal("§cAuto-sell disabled"), false);
                     autoSellInProgress = false;
                     waitingForContainer = false;
                     shouldCloseScreen = false;
@@ -171,20 +186,87 @@ public class SlimeSellerMod implements ClientModInitializer {
         });
     }
 
+    private void checkAndDropMinecarts(MinecraftClient client) {
+        if (client.player == null || client.currentScreen != null) {
+            return;
+        }
+
+        try {
+            var inventory = client.player.getInventory();
+            int droppedCount = 0;
+
+            // Check all inventory slots
+            for (int i = 0; i < 36; i++) {
+                ItemStack stack = inventory.getStack(i);
+
+                if (!stack.isEmpty() && isMinecart(stack.getItem())) {
+                    // Use interaction manager to properly drop items
+                    if (client.interactionManager != null) {
+                        // Pick up the stack first (simulates shift-clicking)
+                        client.interactionManager.clickSlot(
+                                client.player.currentScreenHandler.syncId,
+                                i < 9 ? i + 36 : i, // Adjust slot ID for hotbar vs main inventory
+                                0,
+                                net.minecraft.screen.slot.SlotActionType.PICKUP,
+                                client.player
+                        );
+
+                        // Drop the picked up items
+                        client.interactionManager.clickSlot(
+                                client.player.currentScreenHandler.syncId,
+                                -999, // -999 = drop slot
+                                0,
+                                net.minecraft.screen.slot.SlotActionType.PICKUP,
+                                client.player
+                        );
+
+                        droppedCount++;
+                        System.out.println("[SlimeSeller] Auto-dropped minecart: " + stack.getItem().getName().getString());
+                    }
+                }
+            }
+
+            if (droppedCount > 0) {
+                System.out.println("[SlimeSeller] Auto-dropped " + droppedCount + " minecart stacks");
+            }
+        } catch (Exception e) {
+            System.err.println("[SlimeSeller] Error auto-dropping minecarts: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private boolean isMinecart(Item item) {
+        // Check for all minecart types
+        return item == Items.MINECART ||
+                item == Items.CHEST_MINECART ||
+                item == Items.FURNACE_MINECART ||
+                item == Items.TNT_MINECART ||
+                item == Items.HOPPER_MINECART ||
+                item == Items.COMMAND_BLOCK_MINECART;
+    }
+
     private void openItemSelector(MinecraftClient client) {
         System.out.println("[SlimeSeller] Opening item selector");
-        itemSelectorScreen = new ItemSelectorScreen(Text.literal("Select Item to Sell"), this::onItemSelected);
-        client.setScreen(itemSelectorScreen);
+        client.setScreen(new ItemSelectorScreen(Text.literal("Select Item to Sell"), this::onItemSelected));
     }
 
     private void onItemSelected(Item item) {
-        selectedItem = item;
+        ModConfig.setSelectedItem(item);
         System.out.println("[SlimeSeller] Selected item: " + item.getName().getString());
+
+        // Show confirmation message to player
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player != null) {
+            client.player.sendMessage(
+                    Text.literal("§aSelected item: §f" + item.getName().getString()),
+                    false
+            );
+        }
     }
 
     // Public getter for the selected item (used by ItemSelectorScreen to show green border)
     public static Item getSelectedItem() {
-        return selectedItem;
+        return ModConfig.getSelectedItem();
     }
 
     private int getRandomDelay() {
@@ -194,7 +276,7 @@ public class SlimeSellerMod implements ClientModInitializer {
 
     private void renderAutoSellIndicator(DrawContext drawContext) {
         MinecraftClient client = MinecraftClient.getInstance();
-        String text = "Auto Selling Running";
+        String text = "Auto Selling: " + ModConfig.getSelectedItem().getName().getString();
 
         // Get text width for positioning
         int textWidth = client.textRenderer.getWidth(text);
@@ -204,11 +286,11 @@ public class SlimeSellerMod implements ClientModInitializer {
         int x = screenWidth - textWidth - 10;
         int y = 10;
 
-        // Draw text with green color and shadow (bold effect done by drawing twice with offset)
-        // Green color: 0xFF00FF00 (ARGB format)
+        // Draw background for better readability
+        drawContext.fill(x - 4, y - 2, x + textWidth + 4, y + 12, 0x80000000);
+
+        // Draw text with green color and shadow
         drawContext.drawText(client.textRenderer, text, x, y, 0xFF00FF00, true);
-        // Draw again slightly offset for bold effect
-        drawContext.drawText(client.textRenderer, text, x + 1, y, 0xFF00FF00, true);
     }
 
     private void executeSellCommand(MinecraftClient client) {
@@ -233,6 +315,7 @@ public class SlimeSellerMod implements ClientModInitializer {
 
         try {
             var handler = client.player.currentScreenHandler;
+            Item selectedItem = ModConfig.getSelectedItem();
 
             System.out.println("[SlimeSeller] Container opened with " + handler.slots.size() + " slots");
 

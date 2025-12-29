@@ -10,6 +10,8 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
@@ -24,14 +26,14 @@ public class ItemSelectorScreen extends Screen {
     private int scrollOffset = 0;
     private int hoveredIndex = -1;
     private TextFieldWidget searchField;
+    private ButtonWidget autoDropToggleButton;
 
     private static final int ITEMS_PER_ROW = 9;
     private static final int ROWS_VISIBLE = 5;
     private static final int ITEM_SIZE = 32;
     private static final int ITEM_SPACING = 4;
     private static final int PADDING = 20;
-
-    private ItemGrid itemGrid;
+    private static final int TOP_SECTION_HEIGHT = 70; // Space for search + toggle button
 
     public ItemSelectorScreen(Text title, Consumer<Item> onItemSelected) {
         super(title);
@@ -39,40 +41,21 @@ public class ItemSelectorScreen extends Screen {
         this.availableItems = new ArrayList<>();
         this.filteredItems = new ArrayList<>();
 
-        // Populate with items from player's inventory
-        populateItemsFromInventory();
+        // Populate with ALL items from the game
+        populateAllItems();
     }
 
-    private void populateItemsFromInventory() {
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client.player == null) return;
-
-        List<Item> foundItems = new ArrayList<>();
-
-        // Scan through player inventory to find unique items
-        for (int i = 0; i < client.player.getInventory().size(); i++) {
-            ItemStack stack = client.player.getInventory().getStack(i);
-            if (!stack.isEmpty() && !foundItems.contains(stack.getItem())) {
-                foundItems.add(stack.getItem());
+    private void populateAllItems() {
+        // Get ALL items from the registry
+        for (Item item : Registries.ITEM) {
+            // Skip AIR
+            if (item != Items.AIR) {
+                availableItems.add(item);
             }
         }
 
-        // If no items in inventory, add some common sellable items as defaults
-        if (foundItems.isEmpty()) {
-            foundItems.add(net.minecraft.item.Items.SLIME_BALL);
-            foundItems.add(net.minecraft.item.Items.DIAMOND);
-            foundItems.add(net.minecraft.item.Items.EMERALD);
-            foundItems.add(net.minecraft.item.Items.GOLD_INGOT);
-            foundItems.add(net.minecraft.item.Items.IRON_INGOT);
-            foundItems.add(net.minecraft.item.Items.NETHERITE_INGOT);
-            foundItems.add(net.minecraft.item.Items.COPPER_INGOT);
-            foundItems.add(net.minecraft.item.Items.COAL);
-            foundItems.add(net.minecraft.item.Items.ENDER_PEARL);
-            foundItems.add(net.minecraft.item.Items.BLAZE_ROD);
-        }
-
-        availableItems.addAll(foundItems);
-        filteredItems.addAll(foundItems); // Initially show all items
+        System.out.println("[ItemSelector] Loaded " + availableItems.size() + " items");
+        filteredItems.addAll(availableItems); // Initially show all items
     }
 
     @Override
@@ -91,20 +74,32 @@ public class ItemSelectorScreen extends Screen {
         );
         searchField.setMaxLength(50);
         searchField.setChangedListener(this::onSearchChanged);
+        searchField.setPlaceholder(Text.literal("Search..."));
         this.addDrawableChild(searchField);
 
-        // Calculate grid position (lower due to search bar)
-        int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
-        int startY = PADDING + 60;
-
-        // Add invisible clickable element for item grid
-        itemGrid = new ItemGrid(startX, startY);
-        this.addDrawableChild(itemGrid);
+        // Add auto-drop minecarts toggle button
+        int buttonWidth = 150;
+        autoDropToggleButton = ButtonWidget.builder(
+                getAutoDropButtonText(),
+                button -> {
+                    ModConfig.toggleAutoDropMinecarts();
+                    button.setMessage(getAutoDropButtonText());
+                }
+        ).dimensions(this.width / 2 - buttonWidth / 2, PADDING + 55, buttonWidth, 20).build();
+        this.addDrawableChild(autoDropToggleButton);
 
         // Add close button at the bottom
         this.addDrawableChild(ButtonWidget.builder(ScreenTexts.DONE, button -> this.close())
                 .dimensions(this.width / 2 - 100, this.height - 30, 200, 20)
                 .build());
+    }
+
+    private Text getAutoDropButtonText() {
+        if (ModConfig.isAutoDropMinecarts()) {
+            return Text.literal("§aAuto-Drop Minecarts: ON");
+        } else {
+            return Text.literal("§cAuto-Drop Minecarts: OFF");
+        }
     }
 
     private void onSearchChanged(String searchText) {
@@ -122,11 +117,12 @@ public class ItemSelectorScreen extends Screen {
                 }
             }
         }
+        System.out.println("[ItemSelector] Filtered to " + filteredItems.size() + " items");
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        // Draw simple background instead of using renderBackground to avoid blur issues
+        // Draw simple background
         context.fill(0, 0, this.width, this.height, 0xC0101010);
 
         // Draw title
@@ -136,9 +132,9 @@ public class ItemSelectorScreen extends Screen {
         String instruction = "Search and click an item to select it";
         context.drawCenteredTextWithShadow(this.textRenderer, instruction, this.width / 2, PADDING + 15, 0xAAAAAA);
 
-        // Calculate grid position
+        // Calculate grid position (adjusted for new buttons)
         int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
-        int startY = PADDING + 60;
+        int startY = PADDING + TOP_SECTION_HEIGHT + 10;
 
         hoveredIndex = -1;
 
@@ -180,7 +176,7 @@ public class ItemSelectorScreen extends Screen {
 
         // Draw scroll indicator if needed
         if (filteredItems.size() > maxVisibleItems) {
-            String scrollText = "Scroll to see more items (" + filteredItems.size() + " total)";
+            String scrollText = "Scroll to see more (" + filteredItems.size() + " total)";
             context.drawCenteredTextWithShadow(this.textRenderer, scrollText, this.width / 2,
                     startY + ROWS_VISIBLE * (ITEM_SIZE + ITEM_SPACING) + 10, 0x888888);
         } else if (filteredItems.isEmpty()) {
@@ -195,9 +191,42 @@ public class ItemSelectorScreen extends Screen {
         // Draw tooltip for hovered item (must be after super.render)
         if (hoveredIndex >= 0 && hoveredIndex < filteredItems.size()) {
             Item item = filteredItems.get(hoveredIndex);
-            // Draw simple tooltip with item name
             context.drawTooltip(this.textRenderer, item.getName(), mouseX, mouseY);
         }
+    }
+
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        // Handle left clicks only on the item grid
+        if (button != 0) {
+            return false;
+        }
+
+        // Calculate grid bounds
+        int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
+        int startY = PADDING + TOP_SECTION_HEIGHT + 10;
+
+        // Check which item was clicked (using filtered items)
+        int maxVisibleItems = ITEMS_PER_ROW * ROWS_VISIBLE;
+        for (int i = scrollOffset; i < Math.min(filteredItems.size(), scrollOffset + maxVisibleItems); i++) {
+            int displayIndex = i - scrollOffset;
+            int row = displayIndex / ITEMS_PER_ROW;
+            int col = displayIndex % ITEMS_PER_ROW;
+
+            int x = startX + col * (ITEM_SIZE + ITEM_SPACING);
+            int y = startY + row * (ITEM_SIZE + ITEM_SPACING);
+
+            if (mouseX >= x && mouseX < x + ITEM_SIZE && mouseY >= y && mouseY < y + ITEM_SIZE) {
+                // Item clicked!
+                Item selectedItem = filteredItems.get(i);
+                System.out.println("[ItemSelector] Item clicked: " + selectedItem.getName().getString());
+                onItemSelected.accept(selectedItem);
+                this.close();
+                return true;
+            }
+        }
+
+        // If we didn't click an item, let the screen handle it (for buttons, text fields, etc.)
+        return false;
     }
 
     @Override
@@ -219,70 +248,5 @@ public class ItemSelectorScreen extends Screen {
     @Override
     public boolean shouldPause() {
         return false;
-    }
-
-    // Custom element to handle item grid clicks
-    private class ItemGrid implements Element, Drawable, Selectable {
-        private final int startX;
-        private final int startY;
-
-        public ItemGrid(int startX, int startY) {
-            this.startX = startX;
-            this.startY = startY;
-        }
-
-        @Override
-        public void setFocused(boolean focused) {
-        }
-
-        @Override
-        public boolean isFocused() {
-            return false;
-        }
-
-        @Override
-        public SelectionType getType() {
-            return SelectionType.NONE;
-        }
-
-        @Override
-        public void appendNarrations(net.minecraft.client.gui.screen.narration.NarrationMessageBuilder builder) {
-            builder.put(net.minecraft.client.gui.screen.narration.NarrationPart.HINT,
-                    Text.literal("Item grid with " + filteredItems.size() + " items"));
-        }
-
-        @Override
-        public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-            // Rendering is handled by the parent screen
-        }
-
-        // This method handles mouse clicks on the grid
-        public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            if (button != 0) return false; // Only handle left clicks
-
-            System.out.println("[ItemSelector] Mouse clicked at " + mouseX + ", " + mouseY);
-
-            // Check which item was clicked (using filtered items)
-            int maxVisibleItems = ITEMS_PER_ROW * ROWS_VISIBLE;
-            for (int i = scrollOffset; i < Math.min(filteredItems.size(), scrollOffset + maxVisibleItems); i++) {
-                int displayIndex = i - scrollOffset;
-                int row = displayIndex / ITEMS_PER_ROW;
-                int col = displayIndex % ITEMS_PER_ROW;
-
-                int x = startX + col * (ITEM_SIZE + ITEM_SPACING);
-                int y = startY + row * (ITEM_SIZE + ITEM_SPACING);
-
-                if (mouseX >= x && mouseX < x + ITEM_SIZE && mouseY >= y && mouseY < y + ITEM_SIZE) {
-                    // Item clicked!
-                    Item selectedItem = filteredItems.get(i);
-                    System.out.println("[ItemSelector] Item clicked: " + selectedItem.getName().getString());
-                    onItemSelected.accept(selectedItem);
-                    ItemSelectorScreen.this.close();
-                    return true;
-                }
-            }
-
-            return false;
-        }
     }
 }
