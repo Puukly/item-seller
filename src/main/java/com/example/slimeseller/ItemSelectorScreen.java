@@ -152,9 +152,19 @@ public class ItemSelectorScreen extends Screen {
             int x = startX + col * (ITEM_SIZE + ITEM_SPACING);
             int y = startY + row * (ITEM_SIZE + ITEM_SPACING);
 
+            Item item = filteredItems.get(i);
+
             // Draw slot background
             context.fill(x, y, x + ITEM_SIZE, y + ITEM_SIZE, 0xFF8B8B8B);
             context.fill(x + 1, y + 1, x + ITEM_SIZE - 1, y + ITEM_SIZE - 1, 0xFF373737);
+
+            // Show if this is the currently selected item with green border
+            if (item == SlimeSellerMod.getSelectedItem()) {
+                context.fill(x, y, x + ITEM_SIZE, y + 2, 0xFF00FF00); // Top
+                context.fill(x, y + ITEM_SIZE - 2, x + ITEM_SIZE, y + ITEM_SIZE, 0xFF00FF00); // Bottom
+                context.fill(x, y, x + 2, y + ITEM_SIZE, 0xFF00FF00); // Left
+                context.fill(x + ITEM_SIZE - 2, y, x + ITEM_SIZE, y + ITEM_SIZE, 0xFF00FF00); // Right
+            }
 
             // Check if mouse is hovering over this item
             if (mouseX >= x && mouseX < x + ITEM_SIZE && mouseY >= y && mouseY < y + ITEM_SIZE) {
@@ -164,7 +174,6 @@ public class ItemSelectorScreen extends Screen {
             }
 
             // Draw item
-            Item item = filteredItems.get(i);
             ItemStack stack = new ItemStack(item);
             context.drawItem(stack, x + 8, y + 8);
         }
@@ -238,7 +247,6 @@ public class ItemSelectorScreen extends Screen {
 
         @Override
         public void appendNarrations(net.minecraft.client.gui.screen.narration.NarrationMessageBuilder builder) {
-            // Provide narration for accessibility
             builder.put(net.minecraft.client.gui.screen.narration.NarrationPart.HINT,
                     Text.literal("Item grid with " + filteredItems.size() + " items"));
         }
@@ -248,9 +256,11 @@ public class ItemSelectorScreen extends Screen {
             // Rendering is handled by the parent screen
         }
 
-        // This is the method that gets called for mouse clicks in 1.21.10
+        // This method handles mouse clicks on the grid
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
             if (button != 0) return false; // Only handle left clicks
+
+            System.out.println("[ItemSelector] Mouse clicked at " + mouseX + ", " + mouseY);
 
             // Check which item was clicked (using filtered items)
             int maxVisibleItems = ITEMS_PER_ROW * ROWS_VISIBLE;
@@ -265,6 +275,7 @@ public class ItemSelectorScreen extends Screen {
                 if (mouseX >= x && mouseX < x + ITEM_SIZE && mouseY >= y && mouseY < y + ITEM_SIZE) {
                     // Item clicked!
                     Item selectedItem = filteredItems.get(i);
+                    System.out.println("[ItemSelector] Item clicked: " + selectedItem.getName().getString());
                     onItemSelected.accept(selectedItem);
                     ItemSelectorScreen.this.close();
                     return true;

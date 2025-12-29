@@ -182,6 +182,11 @@ public class SlimeSellerMod implements ClientModInitializer {
         System.out.println("[SlimeSeller] Selected item: " + item.getName().getString());
     }
 
+    // Public getter for the selected item (used by ItemSelectorScreen to show green border)
+    public static Item getSelectedItem() {
+        return selectedItem;
+    }
+
     private int getRandomDelay() {
         // Random delay between 2-5 seconds (40-100 ticks)
         return 40 + random.nextInt(61); // 40 + (0 to 60) = 40 to 100 ticks
