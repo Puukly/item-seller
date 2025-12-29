@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bfde8517-7700-470a-bfbf-3deb797281de" name="Changes" comment="added the files">
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/md5-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/sha1-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.14/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/launch.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/log4j.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-6227aad8ee/1.21.10-net.fabricmc.yarn.1_21_10.1.21.10+build.2-v2/minecraft-merged-6227aad8ee-1.21.10-net.fabricmc.yarn.1_21_10.1.21.10+build.2-v2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-6227aad8ee/1.21.10-net.fabricmc.yarn.1_21_10.1.21.10+build.2-v2/minecraft-merged-6227aad8ee-1.21.10-net.fabricmc.yarn.1_21_10.1.21.10+build.2-v2.jar.backup" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-6227aad8ee/1.21.10-net.fabricmc.yarn.1_21_10.1.21.10+build.2-v2/minecraft-merged-6227aad8ee-1.21.10-net.fabricmc.yarn.1_21_10.1.21.10+build.2-v2.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapClasspath.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-22e4ff05/0.138.3+1.21.10/fabric-api-22e4ff05-0.138.3+1.21.10-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-22e4ff05/0.138.3+1.21.10/fabric-api-22e4ff05-0.138.3+1.21.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-22e4ff05/0.138.3+1.21.10/fabric-api-22e4ff05-0.138.3+1.21.10.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-base-22e4ff05/1.0.0+14b92d896f/fabric-api-base-22e4ff05-1.0.0+14b92d896f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-base-22e4ff05/1.0.0+14b92d896f/fabric-api-base-22e4ff05-1.0.0+14b92d896f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-base-22e4ff05/1.0.0+14b92d896f/fabric-api-base-22e4ff05-1.0.0+14b92d896f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-lookup-api-v1-22e4ff05/1.6.106+d17682156f/fabric-api-lookup-api-v1-22e4ff05-1.6.106+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-lookup-api-v1-22e4ff05/1.6.106+d17682156f/fabric-api-lookup-api-v1-22e4ff05-1.6.106+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-lookup-api-v1-22e4ff05/1.6.106+d17682156f/fabric-api-lookup-api-v1-22e4ff05-1.6.106+d17682156f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-biome-api-v1-22e4ff05/16.1.0+c2417d4f6f/fabric-biome-api-v1-22e4ff05-16.1.0+c2417d4f6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-biome-api-v1-22e4ff05/16.1.0+c2417d4f6f/fabric-biome-api-v1-22e4ff05-16.1.0+c2417d4f6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-biome-api-v1-22e4ff05/16.1.0+c2417d4f6f/fabric-biome-api-v1-22e4ff05-16.1.0+c2417d4f6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-api-v1-22e4ff05/1.1.5+d17682156f/fabric-block-api-v1-22e4ff05-1.1.5+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-api-v1-22e4ff05/1.1.5+d17682156f/fabric-block-api-v1-22e4ff05-1.1.5+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-api-v1-22e4ff05/1.1.5+d17682156f/fabric-block-api-v1-22e4ff05-1.1.5+d17682156f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-view-api-v2-22e4ff05/1.0.34+e4fd1b926f/fabric-block-view-api-v2-22e4ff05-1.0.34+e4fd1b926f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-view-api-v2-22e4ff05/1.0.34+e4fd1b926f/fabric-block-view-api-v2-22e4ff05-1.0.34+e4fd1b926f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-view-api-v2-22e4ff05/1.0.34+e4fd1b926f/fabric-block-view-api-v2-22e4ff05-1.0.34+e4fd1b926f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-client-gametest-api-v1-22e4ff05/4.2.13+14b92d896f/fabric-client-gametest-api-v1-22e4ff05-4.2.13+14b92d896f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-client-gametest-api-v1-22e4ff05/4.2.13+14b92d896f/fabric-client-gametest-api-v1-22e4ff05-4.2.13+14b92d896f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-client-gametest-api-v1-22e4ff05/4.2.13+14b92d896f/fabric-client-gametest-api-v1-22e4ff05-4.2.13+14b92d896f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-command-api-v2-22e4ff05/2.4.0+c0ab2d5d6f/fabric-command-api-v2-22e4ff05-2.4.0+c0ab2d5d6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-command-api-v2-22e4ff05/2.4.0+c0ab2d5d6f/fabric-command-api-v2-22e4ff05-2.4.0+c0ab2d5d6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-command-api-v2-22e4ff05/2.4.0+c0ab2d5d6f/fabric-command-api-v2-22e4ff05-2.4.0+c0ab2d5d6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-content-registries-v0-22e4ff05/10.2.6+b6a242646f/fabric-content-registries-v0-22e4ff05-10.2.6+b6a242646f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-content-registries-v0-22e4ff05/10.2.6+b6a242646f/fabric-content-registries-v0-22e4ff05-10.2.6+b6a242646f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-content-registries-v0-22e4ff05/10.2.6+b6a242646f/fabric-content-registries-v0-22e4ff05-10.2.6+b6a242646f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v1-22e4ff05/2.1.49+7f945d5b6f/fabric-convention-tags-v1-22e4ff05-2.1.49+7f945d5b6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v1-22e4ff05/2.1.49+7f945d5b6f/fabric-convention-tags-v1-22e4ff05-2.1.49+7f945d5b6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v1-22e4ff05/2.1.49+7f945d5b6f/fabric-convention-tags-v1-22e4ff05-2.1.49+7f945d5b6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v2-22e4ff05/2.17.0+ff7bc77d6f/fabric-convention-tags-v2-22e4ff05-2.17.0+ff7bc77d6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v2-22e4ff05/2.17.0+ff7bc77d6f/fabric-convention-tags-v2-22e4ff05-2.17.0+ff7bc77d6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v2-22e4ff05/2.17.0+ff7bc77d6f/fabric-convention-tags-v2-22e4ff05-2.17.0+ff7bc77d6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-crash-report-info-v1-22e4ff05/0.3.18+33df5e6e6f/fabric-crash-report-info-v1-22e4ff05-0.3.18+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-crash-report-info-v1-22e4ff05/0.3.18+33df5e6e6f/fabric-crash-report-info-v1-22e4ff05-0.3.18+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-crash-report-info-v1-22e4ff05/0.3.18+33df5e6e6f/fabric-crash-report-info-v1-22e4ff05-0.3.18+33df5e6e6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-attachment-api-v1-22e4ff05/1.8.33+cd3b9e596f/fabric-data-attachment-api-v1-22e4ff05-1.8.33+cd3b9e596f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-attachment-api-v1-22e4ff05/1.8.33+cd3b9e596f/fabric-data-attachment-api-v1-22e4ff05-1.8.33+cd3b9e596f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-attachment-api-v1-22e4ff05/1.8.33+cd3b9e596f/fabric-data-attachment-api-v1-22e4ff05-1.8.33+cd3b9e596f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-generation-api-v1-22e4ff05/23.2.27+d8b85ef16f/fabric-data-generation-api-v1-22e4ff05-23.2.27+d8b85ef16f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-generation-api-v1-22e4ff05/23.2.27+d8b85ef16f/fabric-data-generation-api-v1-22e4ff05-23.2.27+d8b85ef16f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-generation-api-v1-22e4ff05/23.2.27+d8b85ef16f/fabric-data-generation-api-v1-22e4ff05-23.2.27+d8b85ef16f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-dimensions-v1-22e4ff05/4.0.22+38b9cc196f/fabric-dimensions-v1-22e4ff05-4.0.22+38b9cc196f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-dimensions-v1-22e4ff05/4.0.22+38b9cc196f/fabric-dimensions-v1-22e4ff05-4.0.22+38b9cc196f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-dimensions-v1-22e4ff05/4.0.22+38b9cc196f/fabric-dimensions-v1-22e4ff05-4.0.22+38b9cc196f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-entity-events-v1-22e4ff05/2.1.13+fde3702c6f/fabric-entity-events-v1-22e4ff05-2.1.13+fde3702c6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-entity-events-v1-22e4ff05/2.1.13+fde3702c6f/fabric-entity-events-v1-22e4ff05-2.1.13+fde3702c6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-entity-events-v1-22e4ff05/2.1.13+fde3702c6f/fabric-entity-events-v1-22e4ff05-2.1.13+fde3702c6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-events-interaction-v0-22e4ff05/4.0.36+5ba217126f/fabric-events-interaction-v0-22e4ff05-4.0.36+5ba217126f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-events-interaction-v0-22e4ff05/4.0.36+5ba217126f/fabric-events-interaction-v0-22e4ff05-4.0.36+5ba217126f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-events-interaction-v0-22e4ff05/4.0.36+5ba217126f/fabric-events-interaction-v0-22e4ff05-4.0.36+5ba217126f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-game-rule-api-v1-22e4ff05/1.1.1+e47eaae56f/fabric-game-rule-api-v1-22e4ff05-1.1.1+e47eaae56f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-game-rule-api-v1-22e4ff05/1.1.1+e47eaae56f/fabric-game-rule-api-v1-22e4ff05-1.1.1+e47eaae56f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-game-rule-api-v1-22e4ff05/1.1.1+e47eaae56f/fabric-game-rule-api-v1-22e4ff05-1.1.1+e47eaae56f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-gametest-api-v1-22e4ff05/3.1.21+33df5e6e6f/fabric-gametest-api-v1-22e4ff05-3.1.21+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-gametest-api-v1-22e4ff05/3.1.21+33df5e6e6f/fabric-gametest-api-v1-22e4ff05-3.1.21+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-gametest-api-v1-22e4ff05/3.1.21+33df5e6e6f/fabric-gametest-api-v1-22e4ff05-3.1.21+33df5e6e6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-api-v1-22e4ff05/11.5.11+9bce411b6f/fabric-item-api-v1-22e4ff05-11.5.11+9bce411b6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-api-v1-22e4ff05/11.5.11+9bce411b6f/fabric-item-api-v1-22e4ff05-11.5.11+9bce411b6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-api-v1-22e4ff05/11.5.11+9bce411b6f/fabric-item-api-v1-22e4ff05-11.5.11+9bce411b6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-group-api-v1-22e4ff05/4.2.27+86b3ae576f/fabric-item-group-api-v1-22e4ff05-4.2.27+86b3ae576f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-group-api-v1-22e4ff05/4.2.27+86b3ae576f/fabric-item-group-api-v1-22e4ff05-4.2.27+86b3ae576f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-group-api-v1-22e4ff05/4.2.27+86b3ae576f/fabric-item-group-api-v1-22e4ff05-4.2.27+86b3ae576f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-key-binding-api-v1-22e4ff05/1.1.1+b3ba9c486f/fabric-key-binding-api-v1-22e4ff05-1.1.1+b3ba9c486f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-key-binding-api-v1-22e4ff05/1.1.1+b3ba9c486f/fabric-key-binding-api-v1-22e4ff05-1.1.1+b3ba9c486f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-key-binding-api-v1-22e4ff05/1.1.1+b3ba9c486f/fabric-key-binding-api-v1-22e4ff05-1.1.1+b3ba9c486f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-lifecycle-events-v1-22e4ff05/2.6.9+33df5e6e6f/fabric-lifecycle-events-v1-22e4ff05-2.6.9+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-lifecycle-events-v1-22e4ff05/2.6.9+33df5e6e6f/fabric-lifecycle-events-v1-22e4ff05-2.6.9+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-lifecycle-events-v1-22e4ff05/2.6.9+33df5e6e6f/fabric-lifecycle-events-v1-22e4ff05-2.6.9+33df5e6e6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v2-22e4ff05/3.0.67+3f89f5a56f/fabric-loot-api-v2-22e4ff05-3.0.67+3f89f5a56f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v2-22e4ff05/3.0.67+3f89f5a56f/fabric-loot-api-v2-22e4ff05-3.0.67+3f89f5a56f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v2-22e4ff05/3.0.67+3f89f5a56f/fabric-loot-api-v2-22e4ff05-3.0.67+3f89f5a56f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v3-22e4ff05/2.0.14+d17682156f/fabric-loot-api-v3-22e4ff05-2.0.14+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v3-22e4ff05/2.0.14+d17682156f/fabric-loot-api-v3-22e4ff05-2.0.14+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v3-22e4ff05/2.0.14+d17682156f/fabric-loot-api-v3-22e4ff05-2.0.14+d17682156f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-message-api-v1-22e4ff05/6.1.7+3154c1c86f/fabric-message-api-v1-22e4ff05-6.1.7+3154c1c86f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-message-api-v1-22e4ff05/6.1.7+3154c1c86f/fabric-message-api-v1-22e4ff05-6.1.7+3154c1c86f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-message-api-v1-22e4ff05/6.1.7+3154c1c86f/fabric-message-api-v1-22e4ff05-6.1.7+3154c1c86f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-model-loading-api-v1-22e4ff05/6.0.4+3ffd6ef06f/fabric-model-loading-api-v1-22e4ff05-6.0.4+3ffd6ef06f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-model-loading-api-v1-22e4ff05/6.0.4+3ffd6ef06f/fabric-model-loading-api-v1-22e4ff05-6.0.4+3ffd6ef06f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-model-loading-api-v1-22e4ff05/6.0.4+3ffd6ef06f/fabric-model-loading-api-v1-22e4ff05-6.0.4+3ffd6ef06f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-networking-api-v1-22e4ff05/5.1.0+b095d8db6f/fabric-networking-api-v1-22e4ff05-5.1.0+b095d8db6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-networking-api-v1-22e4ff05/5.1.0+b095d8db6f/fabric-networking-api-v1-22e4ff05-5.1.0+b095d8db6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-networking-api-v1-22e4ff05/5.1.0+b095d8db6f/fabric-networking-api-v1-22e4ff05-5.1.0+b095d8db6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-object-builder-api-v1-22e4ff05/21.1.28+9bce411b6f/fabric-object-builder-api-v1-22e4ff05-21.1.28+9bce411b6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-object-builder-api-v1-22e4ff05/21.1.28+9bce411b6f/fabric-object-builder-api-v1-22e4ff05-21.1.28+9bce411b6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-object-builder-api-v1-22e4ff05/21.1.28+9bce411b6f/fabric-object-builder-api-v1-22e4ff05-21.1.28+9bce411b6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-particles-v1-22e4ff05/4.2.3+a0ee59a46f/fabric-particles-v1-22e4ff05-4.2.3+a0ee59a46f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-particles-v1-22e4ff05/4.2.3+a0ee59a46f/fabric-particles-v1-22e4ff05-4.2.3+a0ee59a46f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-particles-v1-22e4ff05/4.2.3+a0ee59a46f/fabric-particles-v1-22e4ff05-4.2.3+a0ee59a46f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-recipe-api-v1-22e4ff05/8.2.0+39709ef06f/fabric-recipe-api-v1-22e4ff05-8.2.0+39709ef06f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-recipe-api-v1-22e4ff05/8.2.0+39709ef06f/fabric-recipe-api-v1-22e4ff05-8.2.0+39709ef06f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-recipe-api-v1-22e4ff05/8.2.0+39709ef06f/fabric-recipe-api-v1-22e4ff05-8.2.0+39709ef06f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-registry-sync-v0-22e4ff05/6.1.42+679c8c5c6f/fabric-registry-sync-v0-22e4ff05-6.1.42+679c8c5c6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-registry-sync-v0-22e4ff05/6.1.42+679c8c5c6f/fabric-registry-sync-v0-22e4ff05-6.1.42+679c8c5c6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-registry-sync-v0-22e4ff05/6.1.42+679c8c5c6f/fabric-registry-sync-v0-22e4ff05-6.1.42+679c8c5c6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-api-v1-22e4ff05/7.2.2+3706cdf36f/fabric-renderer-api-v1-22e4ff05-7.2.2+3706cdf36f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-api-v1-22e4ff05/7.2.2+3706cdf36f/fabric-renderer-api-v1-22e4ff05-7.2.2+3706cdf36f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-api-v1-22e4ff05/7.2.2+3706cdf36f/fabric-renderer-api-v1-22e4ff05-7.2.2+3706cdf36f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-indigo-22e4ff05/4.1.3+d7df91576f/fabric-renderer-indigo-22e4ff05-4.1.3+d7df91576f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-indigo-22e4ff05/4.1.3+d7df91576f/fabric-renderer-indigo-22e4ff05-4.1.3+d7df91576f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-indigo-22e4ff05/4.1.3+d7df91576f/fabric-renderer-indigo-22e4ff05-4.1.3+d7df91576f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-fluids-v1-22e4ff05/3.1.38+86b3ae576f/fabric-rendering-fluids-v1-22e4ff05-3.1.38+86b3ae576f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-fluids-v1-22e4ff05/3.1.38+86b3ae576f/fabric-rendering-fluids-v1-22e4ff05-3.1.38+86b3ae576f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-fluids-v1-22e4ff05/3.1.38+86b3ae576f/fabric-rendering-fluids-v1-22e4ff05-3.1.38+86b3ae576f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-v1-22e4ff05/16.2.0+bee81f016f/fabric-rendering-v1-22e4ff05-16.2.0+bee81f016f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-v1-22e4ff05/16.2.0+bee81f016f/fabric-rendering-v1-22e4ff05-16.2.0+bee81f016f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-v1-22e4ff05/16.2.0+bee81f016f/fabric-rendering-v1-22e4ff05-16.2.0+bee81f016f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-conditions-api-v1-22e4ff05/5.0.28+33df5e6e6f/fabric-resource-conditions-api-v1-22e4ff05-5.0.28+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-conditions-api-v1-22e4ff05/5.0.28+33df5e6e6f/fabric-resource-conditions-api-v1-22e4ff05-5.0.28+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-conditions-api-v1-22e4ff05/5.0.28+33df5e6e6f/fabric-resource-conditions-api-v1-22e4ff05-5.0.28+33df5e6e6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v0-22e4ff05/3.3.1+d4d4122a6f/fabric-resource-loader-v0-22e4ff05-3.3.1+d4d4122a6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v0-22e4ff05/3.3.1+d4d4122a6f/fabric-resource-loader-v0-22e4ff05-3.3.1+d4d4122a6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v0-22e4ff05/3.3.1+d4d4122a6f/fabric-resource-loader-v0-22e4ff05-3.3.1+d4d4122a6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v1-22e4ff05/1.0.4+14959b836f/fabric-resource-loader-v1-22e4ff05-1.0.4+14959b836f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v1-22e4ff05/1.0.4+14959b836f/fabric-resource-loader-v1-22e4ff05-1.0.4+14959b836f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v1-22e4ff05/1.0.4+14959b836f/fabric-resource-loader-v1-22e4ff05-1.0.4+14959b836f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-api-v1-22e4ff05/3.1.0+9c82a7986f/fabric-screen-api-v1-22e4ff05-3.1.0+9c82a7986f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-api-v1-22e4ff05/3.1.0+9c82a7986f/fabric-screen-api-v1-22e4ff05-3.1.0+9c82a7986f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-api-v1-22e4ff05/3.1.0+9c82a7986f/fabric-screen-api-v1-22e4ff05-3.1.0+9c82a7986f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-handler-api-v1-22e4ff05/1.3.151+d17682156f/fabric-screen-handler-api-v1-22e4ff05-1.3.151+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-handler-api-v1-22e4ff05/1.3.151+d17682156f/fabric-screen-handler-api-v1-22e4ff05-1.3.151+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-handler-api-v1-22e4ff05/1.3.151+d17682156f/fabric-screen-handler-api-v1-22e4ff05-1.3.151+d17682156f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-22e4ff05/1.0.0+d857c9766f/fabric-serialization-api-v1-22e4ff05-1.0.0+d857c9766f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-22e4ff05/1.0.0+d857c9766f/fabric-serialization-api-v1-22e4ff05-1.0.0+d857c9766f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-22e4ff05/1.0.0+d857c9766f/fabric-serialization-api-v1-22e4ff05-1.0.0+d857c9766f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-22e4ff05/1.0.45+328a75ba6f/fabric-sound-api-v1-22e4ff05-1.0.45+328a75ba6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-22e4ff05/1.0.45+328a75ba6f/fabric-sound-api-v1-22e4ff05-1.0.45+328a75ba6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-22e4ff05/1.0.45+328a75ba6f/fabric-sound-api-v1-22e4ff05-1.0.45+328a75ba6f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-tag-api-v1-22e4ff05/1.2.13+2fa446b26f/fabric-tag-api-v1-22e4ff05-1.2.13+2fa446b26f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-tag-api-v1-22e4ff05/1.2.13+2fa446b26f/fabric-tag-api-v1-22e4ff05-1.2.13+2fa446b26f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-tag-api-v1-22e4ff05/1.2.13+2fa446b26f/fabric-tag-api-v1-22e4ff05-1.2.13+2fa446b26f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transfer-api-v1-22e4ff05/6.0.15+79ec2c126f/fabric-transfer-api-v1-22e4ff05-6.0.15+79ec2c126f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transfer-api-v1-22e4ff05/6.0.15+79ec2c126f/fabric-transfer-api-v1-22e4ff05-6.0.15+79ec2c126f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transfer-api-v1-22e4ff05/6.0.15+79ec2c126f/fabric-transfer-api-v1-22e4ff05-6.0.15+79ec2c126f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-22e4ff05/6.5.3+41eb43436f/fabric-transitive-access-wideners-v1-22e4ff05-6.5.3+41eb43436f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-22e4ff05/6.5.3+41eb43436f/fabric-transitive-access-wideners-v1-22e4ff05-6.5.3+41eb43436f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-22e4ff05/6.5.3+41eb43436f/fabric-transitive-access-wideners-v1-22e4ff05-6.5.3+41eb43436f.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/loom-cache/source_mappings/6227aad8ee3feabdc24ef93d2c70d6c2de2daf7f.tiny" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/slimeseller/SlimeSellerMod.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/devlibs/slimeseller-1.0.0-dev.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/devlibs/slimeseller-1.0.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/export_classpath.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/libs/slimeseller-1.0.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/libs/slimeseller-1.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-api-22e4ff05-0.138.3+1.21.10-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-api-22e4ff05-0.138.3+1.21.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-api-base-22e4ff05-1.0.0+14b92d896f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-api-base-22e4ff05-1.0.0+14b92d896f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-api-lookup-api-v1-22e4ff05-1.6.106+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-api-lookup-api-v1-22e4ff05-1.6.106+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-biome-api-v1-22e4ff05-16.1.0+c2417d4f6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-biome-api-v1-22e4ff05-16.1.0+c2417d4f6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-block-api-v1-22e4ff05-1.1.5+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-block-api-v1-22e4ff05-1.1.5+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-block-view-api-v2-22e4ff05-1.0.34+e4fd1b926f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-block-view-api-v2-22e4ff05-1.0.34+e4fd1b926f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-client-gametest-api-v1-22e4ff05-4.2.13+14b92d896f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-client-gametest-api-v1-22e4ff05-4.2.13+14b92d896f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-command-api-v2-22e4ff05-2.4.0+c0ab2d5d6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-command-api-v2-22e4ff05-2.4.0+c0ab2d5d6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-content-registries-v0-22e4ff05-10.2.6+b6a242646f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-content-registries-v0-22e4ff05-10.2.6+b6a242646f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-convention-tags-v1-22e4ff05-2.1.49+7f945d5b6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-convention-tags-v1-22e4ff05-2.1.49+7f945d5b6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-convention-tags-v2-22e4ff05-2.17.0+ff7bc77d6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-convention-tags-v2-22e4ff05-2.17.0+ff7bc77d6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-crash-report-info-v1-22e4ff05-0.3.18+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-crash-report-info-v1-22e4ff05-0.3.18+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-data-attachment-api-v1-22e4ff05-1.8.33+cd3b9e596f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-data-attachment-api-v1-22e4ff05-1.8.33+cd3b9e596f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-data-generation-api-v1-22e4ff05-23.2.27+d8b85ef16f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-data-generation-api-v1-22e4ff05-23.2.27+d8b85ef16f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-dimensions-v1-22e4ff05-4.0.22+38b9cc196f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-dimensions-v1-22e4ff05-4.0.22+38b9cc196f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-entity-events-v1-22e4ff05-2.1.13+fde3702c6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-entity-events-v1-22e4ff05-2.1.13+fde3702c6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-events-interaction-v0-22e4ff05-4.0.36+5ba217126f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-events-interaction-v0-22e4ff05-4.0.36+5ba217126f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-game-rule-api-v1-22e4ff05-1.1.1+e47eaae56f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-game-rule-api-v1-22e4ff05-1.1.1+e47eaae56f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-gametest-api-v1-22e4ff05-3.1.21+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-gametest-api-v1-22e4ff05-3.1.21+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-item-api-v1-22e4ff05-11.5.11+9bce411b6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-item-api-v1-22e4ff05-11.5.11+9bce411b6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-item-group-api-v1-22e4ff05-4.2.27+86b3ae576f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-item-group-api-v1-22e4ff05-4.2.27+86b3ae576f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-key-binding-api-v1-22e4ff05-1.1.1+b3ba9c486f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-key-binding-api-v1-22e4ff05-1.1.1+b3ba9c486f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-lifecycle-events-v1-22e4ff05-2.6.9+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-lifecycle-events-v1-22e4ff05-2.6.9+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-loot-api-v2-22e4ff05-3.0.67+3f89f5a56f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-loot-api-v2-22e4ff05-3.0.67+3f89f5a56f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-loot-api-v3-22e4ff05-2.0.14+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-loot-api-v3-22e4ff05-2.0.14+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-message-api-v1-22e4ff05-6.1.7+3154c1c86f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-message-api-v1-22e4ff05-6.1.7+3154c1c86f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-model-loading-api-v1-22e4ff05-6.0.4+3ffd6ef06f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-model-loading-api-v1-22e4ff05-6.0.4+3ffd6ef06f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-networking-api-v1-22e4ff05-5.1.0+b095d8db6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-networking-api-v1-22e4ff05-5.1.0+b095d8db6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-object-builder-api-v1-22e4ff05-21.1.28+9bce411b6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-object-builder-api-v1-22e4ff05-21.1.28+9bce411b6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-particles-v1-22e4ff05-4.2.3+a0ee59a46f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-particles-v1-22e4ff05-4.2.3+a0ee59a46f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-recipe-api-v1-22e4ff05-8.2.0+39709ef06f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-recipe-api-v1-22e4ff05-8.2.0+39709ef06f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-registry-sync-v0-22e4ff05-6.1.42+679c8c5c6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-registry-sync-v0-22e4ff05-6.1.42+679c8c5c6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-renderer-api-v1-22e4ff05-7.2.2+3706cdf36f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-renderer-api-v1-22e4ff05-7.2.2+3706cdf36f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-renderer-indigo-22e4ff05-4.1.3+d7df91576f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-renderer-indigo-22e4ff05-4.1.3+d7df91576f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-rendering-fluids-v1-22e4ff05-3.1.38+86b3ae576f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-rendering-fluids-v1-22e4ff05-3.1.38+86b3ae576f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-rendering-v1-22e4ff05-16.2.0+bee81f016f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-rendering-v1-22e4ff05-16.2.0+bee81f016f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-resource-conditions-api-v1-22e4ff05-5.0.28+33df5e6e6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-resource-conditions-api-v1-22e4ff05-5.0.28+33df5e6e6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-resource-loader-v0-22e4ff05-3.3.1+d4d4122a6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-resource-loader-v0-22e4ff05-3.3.1+d4d4122a6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-resource-loader-v1-22e4ff05-1.0.4+14959b836f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-resource-loader-v1-22e4ff05-1.0.4+14959b836f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-screen-api-v1-22e4ff05-3.1.0+9c82a7986f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-screen-api-v1-22e4ff05-3.1.0+9c82a7986f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-screen-handler-api-v1-22e4ff05-1.3.151+d17682156f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-screen-handler-api-v1-22e4ff05-1.3.151+d17682156f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-serialization-api-v1-22e4ff05-1.0.0+d857c9766f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-serialization-api-v1-22e4ff05-1.0.0+d857c9766f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-sound-api-v1-22e4ff05-1.0.45+328a75ba6f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-sound-api-v1-22e4ff05-1.0.45+328a75ba6f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-tag-api-v1-22e4ff05-1.2.13+2fa446b26f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-tag-api-v1-22e4ff05-1.2.13+2fa446b26f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-transfer-api-v1-22e4ff05-6.0.15+79ec2c126f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-transfer-api-v1-22e4ff05-6.0.15+79ec2c126f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-transitive-access-wideners-v1-22e4ff05-6.5.3+41eb43436f-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.net.fabricmc.fabric-api-fabric-transitive-access-wideners-v1-22e4ff05-6.5.3+41eb43436f.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/assets/slimeseller/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/SlimeSellerMod.class.uniqueId0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/remapJar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/remapSourcesJar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/sourcesJar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/slimeseller/SlimeSellerMod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/slimeseller/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="slimeseller" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="slimeseller" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="slimeseller" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Puukly&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Puukly/item-seller.git&quot;,
+    &quot;accountId&quot;: &quot;ac26edab-6a64-4bb8-a742-2066f4247d96&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="37WABblU1lBqMvSVnFnSzWnBBo7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.item-seller [build].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Gradle.item-seller [build]">
+    <configuration name="item-seller [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.item-seller [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bfde8517-7700-470a-bfbf-3deb797281de" name="Changes" comment="" />
+      <created>1767008318989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1767008318989</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added the files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the files" />
+  </component>
+</project>

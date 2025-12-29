@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "slimeseller",
+  "version": "1.0.0",
+  "name": "Slime Seller",
+  "description": "Automatically executes /sell and moves all slime balls to the container",
+  "authors": [
+    "SlimeSellerMod"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+  "license": "MIT",
+  "icon": "assets/slimeseller/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.example.slimeseller.SlimeSellerMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "1.21.10",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

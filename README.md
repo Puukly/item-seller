@@ -5,7 +5,6 @@ A client-side Fabric mod that automates selling slime balls by pressing a custom
 ## Features
 
 - Press F6 (configurable) to automatically execute `/sell` command
-- Press F7 (configurable) to automatically execute `/sell` command in a loop
 - Automatically moves all slime balls from your inventory into the opened container
 - Client-side only - works on servers that have the `/sell` command
 - Customizable keybinding through Minecraft's controls menu
