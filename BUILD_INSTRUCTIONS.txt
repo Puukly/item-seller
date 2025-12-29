@@ -1,0 +1,55 @@
+BUILDING THE SLIME SELLER MOD - INSTRUCTIONS
+
+The gradlew.bat file is included, but you'll need to download one more file to complete the build system.
+
+METHOD 1: Download gradle-wrapper.jar (RECOMMENDED)
+====================================================
+1. Download this file:
+   https://github.com/gradle/gradle/raw/v8.14.0/gradle/wrapper/gradle-wrapper.jar
+
+2. Save it to:
+   gradle\wrapper\gradle-wrapper.jar
+
+3. Then run:
+   gradlew.bat build
+
+
+METHOD 2: Install Gradle Directly
+====================================================
+1. Download Gradle 8.14 from: https://gradle.org/releases/
+2. Extract it somewhere (e.g., C:\gradle)
+3. Add C:\gradle\gradle-8.14\bin to your system PATH
+4. Open a NEW command prompt
+5. In the mod folder, run:
+   gradle build
+
+
+METHOD 3: Use IntelliJ IDEA (Easiest for beginners)
+====================================================
+1. Download IntelliJ IDEA Community Edition (free): https://www.jetbrains.com/idea/download/
+2. Open IntelliJ IDEA
+3. Click "Open" and select the slime-seller-mod folder
+4. Wait for IntelliJ to import the project (it will download Gradle automatically)
+5. On the right side, click the "Gradle" tab
+6. Expand "slimeseller" → "Tasks" → "build"
+7. Double-click "build"
+8. Your mod will be in build\libs\slimeseller-1.0.0.jar
+
+
+AFTER BUILDING:
+====================================================
+The compiled mod will be at:
+build\libs\slimeseller-1.0.0.jar
+
+Copy this file to your .minecraft\mods folder along with Fabric API!
+
+
+TROUBLESHOOTING:
+====================================================
+If you get "gradlew.bat is not recognized":
+- Make sure you're in the slime-seller-mod folder when running the command
+- Use the full path: C:\Users\YourName\Downloads\slime-seller-mod\gradlew.bat build
+
+If build fails:
+- Make sure Java 21 is installed (check with: java -version)
+- Try Method 3 (IntelliJ) - it handles everything automatically
