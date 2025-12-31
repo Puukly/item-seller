@@ -1,4 +1,4 @@
-package com.example.slimeseller;
+package com.example.itemseller;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -81,22 +81,17 @@ public class ItemSelectorScreen extends Screen {
         ).dimensions(this.width / 2 - buttonWidth / 2, PADDING + 55, buttonWidth, 20).build();
         addDrawableChild(autoDropToggleButton);
 
-        // Invisible button covering the item grid area that handles clicks
+        // Invisible button covering the item grid area
         int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
         int startY = PADDING + TOP_SECTION_HEIGHT + 10;
         int gridWidth = ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING);
         int gridHeight = ROWS_VISIBLE * (ITEM_SIZE + ITEM_SPACING);
 
-        itemGridButton = new ButtonWidget(startX, startY, gridWidth, gridHeight, Text.empty(),
-                button -> handleGridClick(), ButtonWidget.DEFAULT_NARRATION_SUPPLIER) {
-            @Override
-            public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
-                // Don't render anything - completely invisible button
-            }
-        };
-        addDrawableChild(itemGridButton);
+        itemGridButton = new InvisibleButtonWidget(startX, startY, gridWidth, gridHeight, button -> {
+            handleGridClick();
+        });
 
-        System.out.println("[ItemSelector] Grid button at " + startX + "," + startY + " size " + gridWidth + "x" + gridHeight);
+        addDrawableChild(itemGridButton);
 
         // Done button
         addDrawableChild(ButtonWidget.builder(ScreenTexts.DONE, button -> this.close())
@@ -105,12 +100,11 @@ public class ItemSelectorScreen extends Screen {
     }
 
     private void handleGridClick() {
-        // Get mouse position
         MinecraftClient client = MinecraftClient.getInstance();
         double mouseX = client.mouse.getX() * (double)client.getWindow().getScaledWidth() / (double)client.getWindow().getWidth();
         double mouseY = client.mouse.getY() * (double)client.getWindow().getScaledHeight() / (double)client.getWindow().getHeight();
 
-        System.out.println("[ItemSelector] Grid clicked! Mouse at " + mouseX + ", " + mouseY);
+        System.out.println("[ItemSelector] Grid clicked at " + mouseX + ", " + mouseY);
 
         int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
         int startY = PADDING + TOP_SECTION_HEIGHT + 10;
@@ -166,7 +160,7 @@ public class ItemSelectorScreen extends Screen {
         context.fill(0, 0, this.width, this.height, 0xC0101010);
         context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, PADDING, 0xFFFFFF);
 
-        String instruction = "Search and click an item to select it";
+        String instruction = "Search and click an item to select it (" + filteredItems.size() + " items)";
         context.drawCenteredTextWithShadow(this.textRenderer, instruction, this.width / 2, PADDING + 15, 0xAAAAAA);
 
         int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
@@ -188,7 +182,7 @@ public class ItemSelectorScreen extends Screen {
             context.fill(x, y, x + ITEM_SIZE, y + ITEM_SIZE, 0xFF8B8B8B);
             context.fill(x + 1, y + 1, x + ITEM_SIZE - 1, y + ITEM_SIZE - 1, 0xFF373737);
 
-            if (item == SlimeSellerMod.getSelectedItem()) {
+            if (item == ItemSellerMod.getSelectedItem()) {
                 context.fill(x, y, x + ITEM_SIZE, y + 2, 0xFF00FF00);
                 context.fill(x, y + ITEM_SIZE - 2, x + ITEM_SIZE, y + ITEM_SIZE, 0xFF00FF00);
                 context.fill(x, y, x + 2, y + ITEM_SIZE, 0xFF00FF00);
@@ -214,7 +208,11 @@ public class ItemSelectorScreen extends Screen {
                     startY + 50, 0xFF8888);
         }
 
+        // Render items BEFORE calling super.render() so button doesn't cover them
         super.render(context, mouseX, mouseY, delta);
+
+        // Make the grid button invisible by rendering nothing over it
+        // The button will still capture clicks but won't be visible
 
         if (hoveredIndex >= 0 && hoveredIndex < filteredItems.size()) {
             Item item = filteredItems.get(hoveredIndex);
@@ -222,6 +220,7 @@ public class ItemSelectorScreen extends Screen {
         }
     }
 
+    @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
         int maxScroll = Math.max(0, filteredItems.size() - (ITEMS_PER_ROW * ROWS_VISIBLE));
         int scrollRows = (maxScroll + ITEMS_PER_ROW - 1) / ITEMS_PER_ROW;
@@ -235,6 +234,7 @@ public class ItemSelectorScreen extends Screen {
         return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount);
     }
 
+    @Override
     public boolean shouldPause() {
         return false;
     }

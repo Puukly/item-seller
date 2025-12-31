@@ -1,4 +1,4 @@
-package com.example.slimeseller;
+package com.example.itemseller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
