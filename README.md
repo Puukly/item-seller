@@ -1,11 +1,17 @@
-# Slime Seller Mod for Minecraft 1.21.10
+# Item Seller Mod for Minecraft 1.21.10
 
-A client-side Fabric mod that automates selling slime balls by pressing a customizable hotkey (default: F6).
+MAKE SURE THAT THIS MOD IS ALLOWED ON YOUR SERVER.
+
+This mod was made with the usage of AI and only made for personal use expect bugs.
+
+A client-side Fabric mod that automates selling a desired item by pressing a customizable hotkey (default: F6).
 
 ## Features
 
-- Press F6 (configurable) to automatically execute `/sell` command
-- Automatically moves all slime balls from your inventory into the opened container
+- Press F6 (configurable) to automatically execute `/sell` command once
+- Press F7 (configurable) to automatically execute `/sell` command in a loop
+- Press F8 (configurable) to selected the desired item to sell
+- Automatically moves the selected item from your inventory into the opened container
 - Client-side only - works on servers that have the `/sell` command
 - Customizable keybinding through Minecraft's controls menu
 
@@ -20,8 +26,8 @@ A client-side Fabric mod that automates selling slime balls by pressing a custom
 
 1. Install Fabric Loader for Minecraft 1.21.10 from https://fabricmc.net/use/
 2. Download and install Fabric API from https://modrinth.com/mod/fabric-api
-3. Build this mod using `./gradlew build` (or `gradlew.bat build` on Windows)
-4. Place the generated JAR file from `build/libs/` into your `.minecraft/mods` folder
+3. Download and install this mod
+4. Place the JAR file into your `.minecraft/mods` folder
 5. Launch Minecraft with the Fabric profile
 
 ## Building from Source
@@ -41,33 +47,34 @@ A client-side Fabric mod that automates selling slime balls by pressing a custom
    ```cmd
    gradlew.bat build
    ```
-3. The compiled mod JAR will be in `build/libs/slimeseller-1.0.0.jar`
+3. The compiled mod JAR will be in `build/libs/itemseller-1.0.0.jar`
 
 ## Usage
 
 1. Join a server that has the `/sell` command enabled
-2. Collect slime balls in your inventory
-3. Press F6 (or your custom keybinding)
+2. Press F8 (or your custom keybinding) and select an item
+3. Press F7 (or your custom keybinding)
 4. The mod will:
    - Execute `/sell` command
    - Wait for the container to open
-   - Automatically move all slime balls from your inventory to the container
+   - Automatically move the selected item from your inventory to the container
+   - Press Esc and Loop
 
 ## Configuration
 
 To change the keybinding:
 1. Open Minecraft
 2. Go to Options → Controls → Key Binds
-3. Scroll to the "Slime Seller" category
-4. Click on "Sell Slime Balls" and press your desired key
+3. Scroll to the "Puuklys Item Seller" category
+4. Click on "Toggel Auto-Sell" and press your desired key
 5. Click "Done"
 
 ## How It Works
 
 1. When you press the hotkey, the mod sends the `/sell` command to the server
 2. The mod waits up to 2 seconds for a container GUI to open
-3. Once the container opens, it scans your entire inventory for slime balls
-4. All found slime balls are shift-clicked into the container automatically
+3. Once the container opens, it scans your entire inventory for the desired item
+4. All found items are shift-clicked into the container automatically
 
 ## Compatibility
 
@@ -79,7 +86,7 @@ To change the keybinding:
 
 **The mod doesn't move items:**
 - Make sure the `/sell` command actually opens a container/GUI
-- Check that you have slime balls in your inventory
+- Check that you have the desired item in your inventory
 - Verify the server allows the `/sell` command
 
 **Keybinding doesn't work:**
@@ -88,7 +95,6 @@ To change the keybinding:
 
 **Build errors:**
 - Ensure you have JDK 21 or higher installed
-- Try running `./gradlew clean` before building
 - Check that you have internet connection (Gradle needs to download dependencies)
 
 ## License
