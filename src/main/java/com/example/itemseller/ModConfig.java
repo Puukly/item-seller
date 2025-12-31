@@ -11,28 +11,24 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Configuration manager for the Slime Seller mod.
- * Handles saving and loading settings to/from a JSON file.
- */
 public class ModConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final File CONFIG_DIR = new File("config");
-    private static final File CONFIG_FILE = new File(CONFIG_DIR, "slimeseller.json");
+    private static final File CONFIG_FILE = new File(CONFIG_DIR, "itemseller.json");
 
     private static ConfigData currentConfig = new ConfigData();
 
-    /**
-     * Load configuration from file. If file doesn't exist, create default config.
-     */
     public static void load() {
         try {
             if (!CONFIG_FILE.exists()) {
-                System.out.println("[SlimeSeller Config] No config file found, creating default");
+                System.out.println("[ItemSeller Config] No config file found, creating default");
                 currentConfig = new ConfigData();
-                currentConfig.selectedItemId = "minecraft:slime_ball";
-                currentConfig.autoDropMinecarts = false;
+                currentConfig.selectedItemIds = new ArrayList<>();
+                currentConfig.selectedItemIds.add("minecraft:sugar_cane");
+                currentConfig.multiSelectMode = false;
                 save();
                 return;
             }
@@ -41,155 +37,142 @@ public class ModConfig {
                 ConfigData loaded = GSON.fromJson(reader, ConfigData.class);
                 if (loaded != null) {
                     currentConfig = loaded;
-                    // Ensure defaults for new fields
-                    if (currentConfig.selectedItemId == null) {
-                        currentConfig.selectedItemId = "minecraft:slime_ball";
+                    if (currentConfig.selectedItemIds == null || currentConfig.selectedItemIds.isEmpty()) {
+                        currentConfig.selectedItemIds = new ArrayList<>();
+                        currentConfig.selectedItemIds.add("minecraft:sugar_cane");
                     }
-                    System.out.println("[SlimeSeller Config] Loaded config:");
-                    System.out.println("  - Selected item: " + currentConfig.selectedItemId);
-                    System.out.println("  - Auto-drop minecarts: " + currentConfig.autoDropMinecarts);
+                    System.out.println("[ItemSeller Config] Loaded " + currentConfig.selectedItemIds.size() + " selected items");
+                    System.out.println("[ItemSeller Config] Multi-select mode: " + currentConfig.multiSelectMode);
                 } else {
-                    System.out.println("[SlimeSeller Config] Invalid config file, using defaults");
                     currentConfig = new ConfigData();
                 }
             }
         } catch (IOException e) {
-            System.err.println("[SlimeSeller Config] Failed to load config: " + e.getMessage());
+            System.err.println("[ItemSeller Config] Failed to load: " + e.getMessage());
             currentConfig = new ConfigData();
         }
     }
 
-    /**
-     * Save current configuration to file.
-     */
     public static void save() {
         try {
-            // Ensure config directory exists
             if (!CONFIG_DIR.exists()) {
                 CONFIG_DIR.mkdirs();
             }
-
             try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
                 GSON.toJson(currentConfig, writer);
-                System.out.println("[SlimeSeller Config] Saved config");
             }
         } catch (IOException e) {
-            System.err.println("[SlimeSeller Config] Failed to save config: " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("[ItemSeller Config] Failed to save: " + e.getMessage());
         }
     }
 
-    /**
-     * Get the currently selected item from config.
-     * @return The selected Item, or SLIME_BALL as fallback
-     */
     public static Item getSelectedItem() {
+        if (currentConfig.selectedItemIds == null || currentConfig.selectedItemIds.isEmpty()) {
+            return Items.SUGAR_CANE;
+        }
         try {
-            if (currentConfig.selectedItemId == null || currentConfig.selectedItemId.isEmpty()) {
-                return Items.SLIME_BALL;
-            }
-
-            Identifier id = Identifier.of(currentConfig.selectedItemId);
+            Identifier id = Identifier.of(currentConfig.selectedItemIds.get(0));
             Item item = Registries.ITEM.get(id);
-
-            // Check if item exists (won't be AIR if valid)
             if (item != null && item != Items.AIR) {
                 return item;
             }
-
-            System.err.println("[SlimeSeller Config] Invalid item ID in config: " + currentConfig.selectedItemId);
-            return Items.SLIME_BALL;
         } catch (Exception e) {
-            System.err.println("[SlimeSeller Config] Error getting selected item: " + e.getMessage());
-            return Items.SLIME_BALL;
+            // Fallthrough
         }
+        return Items.SUGAR_CANE;
     }
 
-    /**
-     * Get the ID of the currently selected item.
-     * @return Item identifier string
-     */
-    public static String getSelectedItemId() {
-        return currentConfig.selectedItemId;
-    }
-
-    /**
-     * Set the selected item and save to config file.
-     * @param item The item to select
-     */
-    public static void setSelectedItem(Item item) {
-        try {
-            Identifier id = Registries.ITEM.getId(item);
-            currentConfig.selectedItemId = id.toString();
-            save();
-            System.out.println("[SlimeSeller Config] Selected item updated to: " + currentConfig.selectedItemId);
-        } catch (Exception e) {
-            System.err.println("[SlimeSeller Config] Error setting selected item: " + e.getMessage());
-            e.printStackTrace();
+    public static List<Item> getSelectedItems() {
+        List<Item> items = new ArrayList<>();
+        if (currentConfig.selectedItemIds == null) {
+            items.add(Items.SUGAR_CANE);
+            return items;
         }
+        for (String itemId : currentConfig.selectedItemIds) {
+            try {
+                Identifier id = Identifier.of(itemId);
+                Item item = Registries.ITEM.get(id);
+                if (item != null && item != Items.AIR) {
+                    items.add(item);
+                }
+            } catch (Exception ignored) {}
+        }
+        if (items.isEmpty()) {
+            items.add(Items.SUGAR_CANE);
+        }
+        return items;
     }
 
-    /**
-     * Check if an item is currently selected.
-     * @param item The item to check
-     * @return true if this item is selected
-     */
     public static boolean isItemSelected(Item item) {
         try {
             Identifier id = Registries.ITEM.getId(item);
-            return id.toString().equals(currentConfig.selectedItemId);
+            return currentConfig.selectedItemIds != null &&
+                    currentConfig.selectedItemIds.contains(id.toString());
         } catch (Exception e) {
             return false;
         }
     }
 
-    /**
-     * Check if auto-drop minecarts is enabled.
-     * @return true if auto-drop is enabled
-     */
-    public static boolean isAutoDropMinecarts() {
-        return currentConfig.autoDropMinecarts;
+    public static void setSingleItem(Item item) {
+        try {
+            Identifier id = Registries.ITEM.getId(item);
+            currentConfig.selectedItemIds = new ArrayList<>();
+            currentConfig.selectedItemIds.add(id.toString());
+            save();
+            System.out.println("[ItemSeller Config] Set single item: " + item.getName().getString());
+        } catch (Exception e) {
+            System.err.println("[ItemSeller Config] Error setting item");
+        }
     }
 
-    /**
-     * Set auto-drop minecarts and save to config.
-     * @param enabled true to enable, false to disable
-     */
-    public static void setAutoDropMinecarts(boolean enabled) {
-        currentConfig.autoDropMinecarts = enabled;
+    public static void toggleItem(Item item) {
+        try {
+            Identifier id = Registries.ITEM.getId(item);
+            String itemId = id.toString();
+
+            if (currentConfig.selectedItemIds == null) {
+                currentConfig.selectedItemIds = new ArrayList<>();
+            }
+
+            if (currentConfig.selectedItemIds.contains(itemId)) {
+                if (currentConfig.selectedItemIds.size() > 1) {
+                    currentConfig.selectedItemIds.remove(itemId);
+                    System.out.println("[ItemSeller Config] Removed: " + item.getName().getString());
+                }
+            } else {
+                currentConfig.selectedItemIds.add(itemId);
+                System.out.println("[ItemSeller Config] Added: " + item.getName().getString());
+            }
+            save();
+        } catch (Exception e) {
+            System.err.println("[ItemSeller Config] Error toggling item");
+        }
+    }
+
+    public static boolean isMultiSelectMode() {
+        return currentConfig.multiSelectMode;
+    }
+
+    public static void toggleMultiSelectMode() {
+        currentConfig.multiSelectMode = !currentConfig.multiSelectMode;
+
+        if (!currentConfig.multiSelectMode && currentConfig.selectedItemIds != null &&
+                currentConfig.selectedItemIds.size() > 1) {
+            String firstItem = currentConfig.selectedItemIds.get(0);
+            currentConfig.selectedItemIds.clear();
+            currentConfig.selectedItemIds.add(firstItem);
+        }
+
         save();
-        System.out.println("[SlimeSeller Config] Auto-drop minecarts: " + enabled);
+        System.out.println("[ItemSeller Config] Multi-select: " + currentConfig.multiSelectMode);
     }
 
-    /**
-     * Toggle auto-drop minecarts setting.
-     */
-    public static void toggleAutoDropMinecarts() {
-        setAutoDropMinecarts(!currentConfig.autoDropMinecarts);
+    public static int getSelectedItemCount() {
+        return currentConfig.selectedItemIds != null ? currentConfig.selectedItemIds.size() : 1;
     }
 
-    /**
-     * Reset configuration to defaults.
-     */
-    public static void reset() {
-        currentConfig = new ConfigData();
-        currentConfig.selectedItemId = "minecraft:slime_ball";
-        currentConfig.autoDropMinecarts = false;
-        save();
-        System.out.println("[SlimeSeller Config] Configuration reset to defaults");
-    }
-
-    /**
-     * Internal configuration data class.
-     */
     private static class ConfigData {
-        String selectedItemId = "minecraft:slime_ball";
-        boolean autoDropMinecarts = false;
-
-        // Future config options can be added here:
-        // int autoSellMinDelay = 40;
-        // int autoSellMaxDelay = 100;
-        // boolean playSound = true;
-        // List<String> favoriteItems = new ArrayList<>();
+        List<String> selectedItemIds = new ArrayList<>();
+        boolean multiSelectMode = false;
     }
 }

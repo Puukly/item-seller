@@ -10,12 +10,12 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.List;
 import java.util.Random;
 
 public class ItemSellerMod implements ClientModInitializer {
@@ -35,14 +35,11 @@ public class ItemSellerMod implements ClientModInitializer {
     private static final Random random = new Random();
     private static boolean autoSellInProgress = false;
 
-    private static int minecartCheckTicks = 0;
-    private static final int MINECART_CHECK_INTERVAL = 20;
-
     @Override
     public void onInitializeClient() {
         ModConfig.load();
-        System.out.println("[ItemSeller] Loaded selected item: " + ModConfig.getSelectedItem().getName().getString());
-        System.out.println("[ItemSeller] Auto-drop minecarts: " + ModConfig.isAutoDropMinecarts());
+        List<Item> selectedItems = ModConfig.getSelectedItems();
+        System.out.println("[ItemSeller] Loaded " + selectedItems.size() + " selected items");
 
         KeyBinding.Category itemSellerCategory = KeyBinding.Category.create(
                 Identifier.of("itemseller", "main")
@@ -81,14 +78,6 @@ public class ItemSellerMod implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
 
-            if (ModConfig.isAutoDropMinecarts()) {
-                minecartCheckTicks++;
-                if (minecartCheckTicks >= MINECART_CHECK_INTERVAL) {
-                    checkAndDropMinecarts(client);
-                    minecartCheckTicks = 0;
-                }
-            }
-
             if (openItemSelectorKey.wasPressed() && client.currentScreen == null) {
                 openItemSelector(client);
             }
@@ -96,9 +85,10 @@ public class ItemSellerMod implements ClientModInitializer {
             if (autoSellToggleKey.wasPressed()) {
                 autoSellEnabled = !autoSellEnabled;
                 if (autoSellEnabled) {
-                    Item selectedItem = ModConfig.getSelectedItem();
-                    System.out.println("[ItemSeller] Auto-sell ENABLED for " + selectedItem.getName().getString());
-                    client.player.sendMessage(Text.literal("§aAuto-sell enabled for " + selectedItem.getName().getString()), false);
+                    List<Item> items = ModConfig.getSelectedItems();
+                    System.out.println("[ItemSeller] Auto-sell ENABLED for " + items.size() + " items");
+                    String itemNames = items.size() == 1 ? items.get(0).getName().getString() : items.size() + " items";
+                    client.player.sendMessage(Text.literal("§aAuto-sell enabled for " + itemNames), false);
                     autoSellDelayTicks = 0;
                     autoSellTargetDelay = getRandomDelay();
                     autoSellInProgress = false;
@@ -165,67 +155,14 @@ public class ItemSellerMod implements ClientModInitializer {
         });
     }
 
-    private void checkAndDropMinecarts(MinecraftClient client) {
-        if (client.player == null || client.currentScreen != null) {
-            return;
-        }
-
-        try {
-            var inventory = client.player.getInventory();
-            int droppedCount = 0;
-
-            for (int i = 0; i < 36; i++) {
-                ItemStack stack = inventory.getStack(i);
-
-                if (!stack.isEmpty() && isMinecart(stack.getItem())) {
-                    if (client.interactionManager != null) {
-                        client.interactionManager.clickSlot(
-                                client.player.currentScreenHandler.syncId,
-                                i < 9 ? i + 36 : i,
-                                0,
-                                net.minecraft.screen.slot.SlotActionType.PICKUP,
-                                client.player
-                        );
-
-                        client.interactionManager.clickSlot(
-                                client.player.currentScreenHandler.syncId,
-                                -999,
-                                0,
-                                net.minecraft.screen.slot.SlotActionType.PICKUP,
-                                client.player
-                        );
-
-                        droppedCount++;
-                        System.out.println("[ItemSeller] Auto-dropped minecart: " + stack.getItem().getName().getString());
-                    }
-                }
-            }
-
-            if (droppedCount > 0) {
-                System.out.println("[ItemSeller] Auto-dropped " + droppedCount + " minecart stacks");
-            }
-        } catch (Exception e) {
-            System.err.println("[ItemSeller] Error auto-dropping minecarts: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    private boolean isMinecart(Item item) {
-        return item == Items.MINECART ||
-                item == Items.CHEST_MINECART ||
-                item == Items.FURNACE_MINECART ||
-                item == Items.TNT_MINECART ||
-                item == Items.HOPPER_MINECART ||
-                item == Items.COMMAND_BLOCK_MINECART;
-    }
-
     private void openItemSelector(MinecraftClient client) {
         System.out.println("[ItemSeller] Opening item selector");
-        client.setScreen(new ItemSelectorScreen(Text.literal("Select Item to Sell"), this::onItemSelected));
+        client.setScreen(new ItemSelectorScreen(Text.literal("Select Items to Sell"), this::onItemSelected));
     }
 
     private void onItemSelected(Item item) {
-        ModConfig.setSelectedItem(item);
+        // In single-select mode, this gets called
+        ModConfig.setSingleItem(item);
         System.out.println("[ItemSeller] Selected item: " + item.getName().getString());
 
         MinecraftClient client = MinecraftClient.getInstance();
@@ -247,7 +184,10 @@ public class ItemSellerMod implements ClientModInitializer {
 
     private void renderAutoSellIndicator(DrawContext drawContext) {
         MinecraftClient client = MinecraftClient.getInstance();
-        String text = "Auto Selling: " + ModConfig.getSelectedItem().getName().getString();
+        List<Item> items = ModConfig.getSelectedItems();
+        String text = items.size() == 1 ?
+                "Auto Selling: " + items.get(0).getName().getString() :
+                "Auto Selling: " + items.size() + " items";
 
         int textWidth = client.textRenderer.getWidth(text);
         int screenWidth = client.getWindow().getScaledWidth();
@@ -261,14 +201,11 @@ public class ItemSellerMod implements ClientModInitializer {
 
     private void executeSellCommand(MinecraftClient client) {
         if (client.player != null && client.player.networkHandler != null) {
-            String command = "sell";
-
             try {
-                client.player.networkHandler.sendChatCommand(command);
-                System.out.println("[ItemSeller] Sent command using sendChatCommand()");
+                client.player.networkHandler.sendChatCommand("sell");
+                System.out.println("[ItemSeller] Sent /sell command");
             } catch (Exception e) {
                 client.player.networkHandler.sendChatMessage("/sell");
-                System.out.println("[ItemSeller] Fallback: sent using sendChatMessage()");
             }
         }
     }
@@ -281,18 +218,17 @@ public class ItemSellerMod implements ClientModInitializer {
 
         try {
             var handler = client.player.currentScreenHandler;
-            Item selectedItem = ModConfig.getSelectedItem();
+            List<Item> selectedItems = ModConfig.getSelectedItems();
 
-            System.out.println("[ItemSeller] Container opened with " + handler.slots.size() + " slots");
+            System.out.println("[ItemSeller] Container opened, moving " + selectedItems.size() + " item types");
 
             int playerInventoryStart = handler.slots.size() - 36;
+            int totalMoved = 0;
 
-            int movedCount = 0;
             for (int i = playerInventoryStart; i < handler.slots.size(); i++) {
                 ItemStack stack = handler.slots.get(i).getStack();
 
-                if (!stack.isEmpty() && stack.getItem() == selectedItem) {
-                    System.out.println("[ItemSeller] Moving " + selectedItem.getName().getString() + " from slot " + i);
+                if (!stack.isEmpty() && selectedItems.contains(stack.getItem())) {
                     client.interactionManager.clickSlot(
                             handler.syncId,
                             i,
@@ -300,10 +236,10 @@ public class ItemSellerMod implements ClientModInitializer {
                             SlotActionType.QUICK_MOVE,
                             client.player
                     );
-                    movedCount++;
+                    totalMoved++;
                 }
             }
-            System.out.println("[ItemSeller] Moved " + movedCount + " " + selectedItem.getName().getString() + " stacks");
+            System.out.println("[ItemSeller] Moved " + totalMoved + " stacks total");
         } catch (Exception e) {
             System.err.println("[ItemSeller] Error moving items: " + e.getMessage());
             e.printStackTrace();

@@ -22,7 +22,7 @@ public class ItemSelectorScreen extends Screen {
     private final List<Item> filteredItems;
     private int scrollOffset = 0;
     private TextFieldWidget searchField;
-    private ButtonWidget autoDropToggleButton;
+    private ButtonWidget multiSelectToggleButton;
     private ButtonWidget itemGridButton;
 
     private static final int ITEMS_PER_ROW = 9;
@@ -54,7 +54,6 @@ public class ItemSelectorScreen extends Screen {
     protected void init() {
         super.init();
 
-        // Search field
         int searchFieldWidth = 200;
         searchField = new TextFieldWidget(
                 this.textRenderer,
@@ -69,19 +68,16 @@ public class ItemSelectorScreen extends Screen {
         searchField.setPlaceholder(Text.literal("Search..."));
         addDrawableChild(searchField);
 
-        // Auto-drop toggle button
-        int buttonWidth = 150;
-        autoDropToggleButton = ButtonWidget.builder(
-                getAutoDropButtonText(),
+        int buttonWidth = 180;
+        multiSelectToggleButton = ButtonWidget.builder(
+                getMultiSelectButtonText(),
                 button -> {
-                    ModConfig.toggleAutoDropMinecarts();
-                    button.setMessage(getAutoDropButtonText());
-                    System.out.println("[ItemSelector] Minecart toggle: " + ModConfig.isAutoDropMinecarts());
+                    ModConfig.toggleMultiSelectMode();
+                    button.setMessage(getMultiSelectButtonText());
                 }
         ).dimensions(this.width / 2 - buttonWidth / 2, PADDING + 55, buttonWidth, 20).build();
-        addDrawableChild(autoDropToggleButton);
+        addDrawableChild(multiSelectToggleButton);
 
-        // Invisible button covering the item grid area
         int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
         int startY = PADDING + TOP_SECTION_HEIGHT + 10;
         int gridWidth = ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING);
@@ -90,10 +86,8 @@ public class ItemSelectorScreen extends Screen {
         itemGridButton = new InvisibleButtonWidget(startX, startY, gridWidth, gridHeight, button -> {
             handleGridClick();
         });
-
         addDrawableChild(itemGridButton);
 
-        // Done button
         addDrawableChild(ButtonWidget.builder(ScreenTexts.DONE, button -> this.close())
                 .dimensions(this.width / 2 - 100, this.height - 30, 200, 20)
                 .build());
@@ -103,8 +97,6 @@ public class ItemSelectorScreen extends Screen {
         MinecraftClient client = MinecraftClient.getInstance();
         double mouseX = client.mouse.getX() * (double)client.getWindow().getScaledWidth() / (double)client.getWindow().getWidth();
         double mouseY = client.mouse.getY() * (double)client.getWindow().getScaledHeight() / (double)client.getWindow().getHeight();
-
-        System.out.println("[ItemSelector] Grid clicked at " + mouseX + ", " + mouseY);
 
         int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
         int startY = PADDING + TOP_SECTION_HEIGHT + 10;
@@ -120,20 +112,23 @@ public class ItemSelectorScreen extends Screen {
 
             if (mouseX >= x && mouseX < x + ITEM_SIZE && mouseY >= y && mouseY < y + ITEM_SIZE) {
                 Item selectedItem = filteredItems.get(i);
-                System.out.println("[ItemSelector] *** SELECTED: " + selectedItem.getName().getString() + " ***");
-                onItemSelected.accept(selectedItem);
-                this.close();
+
+                if (ModConfig.isMultiSelectMode()) {
+                    ModConfig.toggleItem(selectedItem);
+                } else {
+                    onItemSelected.accept(selectedItem);
+                    this.close();
+                }
                 return;
             }
         }
-        System.out.println("[ItemSelector] Click was outside all item slots");
     }
 
-    private Text getAutoDropButtonText() {
-        if (ModConfig.isAutoDropMinecarts()) {
-            return Text.literal("§aAuto-Drop Minecarts: ON");
+    private Text getMultiSelectButtonText() {
+        if (ModConfig.isMultiSelectMode()) {
+            return Text.literal("§aMulti-Select: ON (" + ModConfig.getSelectedItemCount() + ")");
         } else {
-            return Text.literal("§cAuto-Drop Minecarts: OFF");
+            return Text.literal("§7Multi-Select: OFF");
         }
     }
 
@@ -152,15 +147,20 @@ public class ItemSelectorScreen extends Screen {
                 }
             }
         }
-        System.out.println("[ItemSelector] Filtered to " + filteredItems.size() + " items");
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        if (multiSelectToggleButton != null) {
+            multiSelectToggleButton.setMessage(getMultiSelectButtonText());
+        }
+
         context.fill(0, 0, this.width, this.height, 0xC0101010);
         context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, PADDING, 0xFFFFFF);
 
-        String instruction = "Search and click an item to select it (" + filteredItems.size() + " items)";
+        String instruction = ModConfig.isMultiSelectMode() ?
+                "Click to toggle, Done to finish" :
+                "Click an item to select";
         context.drawCenteredTextWithShadow(this.textRenderer, instruction, this.width / 2, PADDING + 15, 0xAAAAAA);
 
         int startX = (this.width - (ITEMS_PER_ROW * (ITEM_SIZE + ITEM_SPACING))) / 2;
@@ -182,7 +182,7 @@ public class ItemSelectorScreen extends Screen {
             context.fill(x, y, x + ITEM_SIZE, y + ITEM_SIZE, 0xFF8B8B8B);
             context.fill(x + 1, y + 1, x + ITEM_SIZE - 1, y + ITEM_SIZE - 1, 0xFF373737);
 
-            if (item == ItemSellerMod.getSelectedItem()) {
+            if (ModConfig.isItemSelected(item)) {
                 context.fill(x, y, x + ITEM_SIZE, y + 2, 0xFF00FF00);
                 context.fill(x, y + ITEM_SIZE - 2, x + ITEM_SIZE, y + ITEM_SIZE, 0xFF00FF00);
                 context.fill(x, y, x + 2, y + ITEM_SIZE, 0xFF00FF00);
@@ -199,20 +199,14 @@ public class ItemSelectorScreen extends Screen {
         }
 
         if (filteredItems.size() > maxVisibleItems) {
-            String scrollText = "Scroll to see more (" + filteredItems.size() + " total)";
+            String scrollText = "Scroll for more (" + filteredItems.size() + " total)";
             context.drawCenteredTextWithShadow(this.textRenderer, scrollText, this.width / 2,
                     startY + ROWS_VISIBLE * (ITEM_SIZE + ITEM_SPACING) + 10, 0x888888);
         } else if (filteredItems.isEmpty()) {
-            String noResultsText = "No items found";
-            context.drawCenteredTextWithShadow(this.textRenderer, noResultsText, this.width / 2,
-                    startY + 50, 0xFF8888);
+            context.drawCenteredTextWithShadow(this.textRenderer, "No items found", this.width / 2, startY + 50, 0xFF8888);
         }
 
-        // Render items BEFORE calling super.render() so button doesn't cover them
         super.render(context, mouseX, mouseY, delta);
-
-        // Make the grid button invisible by rendering nothing over it
-        // The button will still capture clicks but won't be visible
 
         if (hoveredIndex >= 0 && hoveredIndex < filteredItems.size()) {
             Item item = filteredItems.get(hoveredIndex);
